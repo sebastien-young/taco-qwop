@@ -9,7 +9,7 @@ namespace engine {
 	public:
 		Object ();
 		virtual const bool draw () const;
-		virtual const bool update ()
+		virtual const bool update ();
 	};
 }
 
