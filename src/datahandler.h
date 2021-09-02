@@ -49,7 +49,7 @@ class List {
 	List (T * elem) : obj (elem), next(nullptr), prev(nullptr) {}
 
 	List * operator + (List * elem) {
-		if (next == elem || this == elem) return;
+		if (next == elem || this == elem) return nullptr;
 		if (next != nullptr) { *elem + next; }
 		next = elem;
 		*elem - this;
@@ -61,7 +61,7 @@ class List {
 	}
 
 	List * operator + (std::nullptr_t) {
-		if (next == nullptr) return;
+		if (next == nullptr) return nullptr;
 		List * temp = next;
 		next = nullptr;
 		*temp - nullptr;
@@ -77,7 +77,7 @@ class List {
 	}
 
 	List * operator - (List * elem) {
-		if (prev == elem) return;
+		if (prev == elem) return nullptr;
 		if (prev != nullptr) { *elem - prev; }
 		prev = elem;
 		*elem + this;
@@ -89,7 +89,7 @@ class List {
 	}
 
 	List * operator - (const std::nullptr_t) {
-		if (prev == nullptr) return;
+		if (prev == nullptr) return nullptr;
 		List * temp = prev;
 		prev = nullptr;
 		*temp + nullptr;

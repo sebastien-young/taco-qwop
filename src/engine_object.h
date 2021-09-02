@@ -6,7 +6,7 @@
 namespace engine {
 	class Object {
 		Linked::List<bool (*) (void)> * notify;
-		Linked::List<Linked::List> * subscriptions;
+		Linked::List<Linked::List<bool (*) (void)>> * subscriptions;
 		Vector::Coord spawn;
 		Vector::Coord size;
 	public:
@@ -15,8 +15,8 @@ namespace engine {
 		Object (Vector::Coord, Vector::Coord);
 		virtual const bool draw () const;
 		virtual const bool update ();
-		virtual Linked::List & subscribe (bool (*) (void));
-		virtual const bool unsubscribe (Linked::List *);
+		virtual Linked::List<bool (*) (void)> & subscribe (bool (*) (void));
+		virtual const bool unsubscribe (Linked::List<bool (*) (void)> *);
 	};
 
 	class Solid : public Object {
@@ -47,7 +47,7 @@ namespace engine {
 		float rotation;
 		float speed;
 		bool clockwise;
-		Rotor ();
+		Rotile ();
 	public:
 		const bool rotate ();
 		const bool roll (float);
