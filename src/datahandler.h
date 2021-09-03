@@ -4,6 +4,38 @@
 #include <cstddef>
 #include <memory>
 
+namespace Vector {
+class Coord {
+	Coord ();
+public:
+	Coord (int _x, int _y) : x (_x), y (_y) {}
+	int x;
+	int y;
+	Coord & operator += (const Coord & delta) {
+		x += delta.x;
+		y += delta.y;
+		return *this;
+	}
+	Coord & operator -= (const Coord & delta) {
+		x -= delta.x;
+		y -= delta.y;
+		return *this;
+	}
+	Coord operator + (const Coord & delta) const {
+		return Coord (x + delta.x, y + delta.y);
+	}
+	Coord operator - (const Coord & delta) const {
+		return Coord (x - delta.x, y - delta.y);
+	}
+	Coord operator / (const int & rhs) const {
+		return Coord (x / rhs, y / rhs);
+	}
+	Coord operator * (const int & rhs) const {
+		return Coord (x * rhs, y * rhs);
+	}
+};
+}
+
 namespace Linked {
 
 template <typename T>
